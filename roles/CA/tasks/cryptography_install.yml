@@ -1,0 +1,114 @@
+---
+
+- name: copy cryptography package to the remote CA server
+  unarchive:
+    src: ../files/cryptography-2.8.tar.gz
+    dest: /tmp/
+
+- name: install yum packages for cryptography
+  copy:
+    src: ../files/yum_packages/{{item}}
+    dest: /tmp/yum_packages/
+  with_items:
+    - cpp-4.8.5-39.el7.x86_64.rpm
+    - dwz-0.11-3.el7.x86_64.rpm
+    - gcc-4.8.5-39.el7.x86_64.rpm
+    - glibc-2.17-292.el7.i686.rpm
+    - glibc-devel-2.17-292.el7.x86_64.rpm
+    - glibc-headers-2.17-292.el7.x86_64.rpm
+    - kernel-headers-3.10.0-1062.9.1.el7.x86_64.rpm
+    - keyutils-libs-1.5.8-3.el7.i686.rpm
+    - keyutils-libs-devel-1.5.8-3.el7.x86_64.rpm
+    - krb5-devel-1.15.1-37.el7_7.2.i686.rpm
+    - krb5-devel-1.15.1-37.el7_7.2.x86_64.rpm
+    - krb5-libs-1.15.1-37.el7_7.2.i686.rpm
+    - krb5-libs-1.15.1-37.el7_7.2.x86_64.rpm
+    - libcom_err-1.42.9-16.el7.i686.rpm
+    - libcom_err-devel-1.42.9-16.el7.x86_64.rpm
+    - libffi-3.0.13-18.el7.i686.rpm
+    - libffi-devel-3.0.13-18.el7.i686.rpm
+    - libffi-devel-3.0.13-18.el7.x86_64.rpm
+    - libgcc-4.8.5-39.el7.i686.rpm
+    - libkadm5-1.15.1-37.el7_7.2.i686.rpm
+    - libkadm5-1.15.1-37.el7_7.2.x86_64.rpm
+    - libmpc-1.0.1-3.el7.x86_64.rpm
+    - libselinux-2.5-14.1.el7.i686.rpm
+    - libselinux-devel-2.5-14.1.el7.x86_64.rpm
+    - libsepol-2.5-10.el7.i686.rpm
+    - libsepol-devel-2.5-10.el7.x86_64.rpm
+    - libstdc++-4.8.5-39.el7.i686.rpm
+    - libverto-0.2.5-4.el7.i686.rpm
+    - libverto-devel-0.2.5-4.el7.x86_64.rpm
+    - mpfr-3.1.1-4.el7.x86_64.rpm
+    - nss-softokn-freebl-3.44.0-8.el7_7.i686.rpm
+    - nss-softokn-freebl-3.44.0-8.el7_7.x86_64.rpm
+    - openssl-devel-1.0.2k-19.el7.i686.rpm
+    - openssl-devel-1.0.2k-19.el7.x86_64.rpm
+    - openssl-libs-1.0.2k-19.el7.i686.rpm
+    - pcre-8.32-17.el7.i686.rpm
+    - pcre-devel-8.32-17.el7.x86_64.rpm
+    - perl-5.16.3-294.el7_6.x86_64.rpm
+    - perl-Carp-1.26-244.el7.noarch.rpm
+    - perl-constant-1.27-2.el7.noarch.rpm
+    - perl-Encode-2.51-7.el7.x86_64.rpm
+    - perl-Exporter-5.68-3.el7.noarch.rpm
+    - perl-File-Path-2.09-2.el7.noarch.rpm
+    - perl-File-Temp-0.23.01-3.el7.noarch.rpm
+    - perl-Filter-1.49-3.el7.x86_64.rpm
+    - perl-Getopt-Long-2.40-3.el7.noarch.rpm
+    - perl-HTTP-Tiny-0.033-3.el7.noarch.rpm
+    - perl-libs-5.16.3-294.el7_6.x86_64.rpm
+    - perl-macros-5.16.3-294.el7_6.x86_64.rpm
+    - perl-parent-0.225-244.el7.noarch.rpm
+    - perl-PathTools-3.40-5.el7.x86_64.rpm
+    - perl-Pod-Escapes-1.04-294.el7_6.noarch.rpm
+    - perl-podlators-2.5.1-3.el7.noarch.rpm
+    - perl-Pod-Perldoc-3.20-4.el7.noarch.rpm
+    - perl-Pod-Simple-3.28-4.el7.noarch.rpm
+    - perl-Pod-Usage-1.63-3.el7.noarch.rpm
+    - perl-Scalar-List-Utils-1.27-248.el7.x86_64.rpm
+    - perl-Socket-2.010-4.el7.x86_64.rpm
+    - perl-srpm-macros-1-8.el7.noarch.rpm
+    - perl-Storable-2.45-3.el7.x86_64.rpm
+    - perl-Text-ParseWords-3.29-4.el7.noarch.rpm
+    - perl-threads-1.87-4.el7.x86_64.rpm
+    - perl-threads-shared-1.43-6.el7.x86_64.rpm
+    - perl-Time-HiRes-1.9725-3.el7.x86_64.rpm
+    - perl-Time-Local-1.2300-2.el7.noarch.rpm
+    - python2-rpm-macros-3-32.el7.noarch.rpm
+    - python-devel-2.7.5-86.el7.x86_64.rpm
+    - python-rpm-macros-3-32.el7.noarch.rpm
+    - python-srpm-macros-3-32.el7.noarch.rpm
+    - redhat-rpm-config-9.1.0-88.el7.centos.noarch.rpm
+    - zip-3.0-11.el7.x86_64.rpm
+    - zlib-1.2.7-18.el7.i686.rpm
+    - zlib-devel-1.2.7-18.el7.i686.rpm
+    - zlib-devel-1.2.7-18.el7.x86_64.rpm
+
+- name: install yum package
+  raw: "cd /tmp/yum_packages && yum install -y *"
+  ignore_errors: true
+
+- name: copy crptography packages
+  copy:
+    src: ../files/cryptography/{{item}}
+    dest: /tmp/cryptography/
+  loop:
+    - enum34-1.1.6-py2-none-any.whl
+    - six-1.13.0-py2.py3-none-any.whl
+    - ipaddress-1.0.23-py2.py3-none-any.whl
+    - pycparser-2.19.tar.gz
+    - cffi-1.13.2-cp27-cp27mu-manylinux1_x86_64.whl
+
+- name: pip install packages in the remote CA server
+  pip:
+    name: file:///tmp/cryptography/{{item}}
+  loop:
+    - enum34-1.1.6-py2-none-any.whl
+    - six-1.13.0-py2.py3-none-any.whl
+    - ipaddress-1.0.23-py2.py3-none-any.whl
+    - pycparser-2.19.tar.gz
+    - cffi-1.13.2-cp27-cp27mu-manylinux1_x86_64.whl
+
+- name: install cryptography package 
+  raw: cd /tmp/cryptography-2.8 && python setup.py install

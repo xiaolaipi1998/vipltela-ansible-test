@@ -1,0 +1,54 @@
+---
+- name: copy root-chain to Viptela  
+  hosts: localhost
+  gather_facts: no
+  roles:
+    - role: ../roles/root_chain
+      tags: Viptela:root-chain
+
+- name: All of the Viptela device install the root-chain
+  hosts: Viptela
+  gather_facts: no
+  roles:
+    - role: ../roles/install_root_chain
+      tags: Viptela:install-root-chain
+
+- name: vManage synchronize the root-chain
+  hosts: vManage
+  connection: localhost
+  gather_facts: no
+  roles:
+    - role: ../roles/login
+      tags: vManage:login
+   
+    - role: ./roles/sync_rootcertchain
+      tags: vMange:sync-rootcertchain
+
+- name: Viptela device request the csr to the CA server
+  hosts: Viptela
+  gather_facts: no
+  roles:
+    - role: ../roles/csr_request
+      tags: Viptela:csr-request
+
+- name: CA server sign the csr for the clients
+  hosts: CA_host
+  gather_facts: no
+  roles:
+    - role: ../roles/ca_sign_csr
+      tags: CA:ca-sign-csr
+
+- name: deliver signed-certificate crt to all the client
+  hosts: localhost
+  gather_facts: no
+  serial: 1
+  roles:
+    - role: ../roles/deliver_certificate_crt 
+      tags: CA:deliver-certificate-crt
+
+- name: All of the Viptela device install the certificate crt 
+  hosts: Viptela
+  gather_facts: no
+  roles:
+    - role: ../roles/install_crt
+      tags: Viptela:install-crt

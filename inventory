@@ -1,0 +1,30 @@
+[CA_host]
+CA ansible_host=10.124.112.56
+
+[CA_host:vars]
+ansible_ssh_user=root
+ansible_ssh_pass=admin
+
+[vManage_DC1]
+Test_vManage_02 ansible_host=10.124.112.119 
+Test_vManage_03 ansible_host=10.124.112.120 
+
+[vManage_DC2]
+
+[vManage:children]
+vManage_DC1
+vManage_DC2
+
+[vBond]
+
+[vSmart]
+
+
+[Viptela:children]
+vManage
+vBond
+vSmart
+
+[Viptela:vars]
+ansible_ssh_user=admin
+ansible_ssh_pass=admin

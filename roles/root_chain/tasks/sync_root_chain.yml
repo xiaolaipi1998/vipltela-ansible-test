@@ -1,0 +1,8 @@
+---
+#- name: copy rootCA.crt to the vepleta 
+#  raw: 'scp /tmp/rootCA.crt admin@{{item}}:'
+#  loop: "{{groups.Viptela}}"
+- set_fact:
+    ALL_VIPTELA_LIST: "{{ALL_VIPTELA_LIST|default([])}} + [{'HOST': '{{item}}', 'IP': '{{hostvars[item].VPN512_INTERFACES.eth0.IP_ADDR}}'}]"
+    cacheable: yes
+  loop: "{{groups.Viptela}}"

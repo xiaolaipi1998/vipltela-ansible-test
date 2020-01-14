@@ -1,0 +1,6 @@
+---
+
+- name: install root chain in the device
+  cli_command:
+    command: 'request root-cert-chain install /home/admin/rootCA.crt'
+

@@ -1,0 +1,29 @@
+---
+HOST_NAME: Test_vManage_03
+SYSTEM_IP: 10.255.255.3
+VPN0_INTERFACES:
+  eth1:
+    TUNNEL_FLAG: True
+    IPSEC: False
+    IP_ADDR: 10.1.1.2
+    PREFIX: 24
+    PORT_STATE: "no shutdown"
+    COLOR: "mpls"
+    SERVICE: "all dhcp dns icmp sshd netconf ntp https"
+    NEXT_HOP: 10.1.1.254
+  eth2:
+    TUNNEL_FLAG: False
+    IP_ADDR: 10.1.2.2
+    PREFIX: 24
+    PORT_STATE: "no shutdown"
+    COLOR: "biz-internet"
+    SERVICE: "all dhcp dns icmp sshd netconf ntp https"
+    NEXT_HOP: 10.1.2.254
+VPN512_INTERFACES:
+  eth0:
+    IP_ADDR: 10.124.112.120
+    PREFIX: 24
+    PORT_STATE: "no shutdown"
+    NEXT_HOP: 10.124.112.254
+
+

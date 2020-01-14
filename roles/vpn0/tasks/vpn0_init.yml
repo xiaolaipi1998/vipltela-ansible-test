@@ -1,0 +1,37 @@
+---
+
+- set_fact: 
+    command_list: >- 
+      {% for eth, state  in VPN0_INTERFACES.items() %}
+       interface  {{ eth }}
+       {{ state.PORT_STATE }}
+       ip address {{ state.IP_ADDR }}{{'/'}}{{ state.PREFIX }}
+       {% if state.TUNNEL_FLAG == True %}
+       {% if state.IPSEC == True %}
+       encapsulation ipsec
+       {% endif %}
+       tunnel-interface 
+       color {{ state.COLOR }}
+       allow-service {{ state.SERVICE }}
+       {% endif %}
+       ip route 0.0.0.0/0 {{ state.NEXT_HOP }}
+      {% endfor %}
+  
+- name:  vpn0  mode
+  cli_command:
+    command: "{{ item }}"
+  loop:
+    - "vpn 0"
+    - "dns {{ DNS_SERVER }}"
+
+- name: configure interfaces
+  cli_command:
+    command: "{{item}}"
+  with_items: "{{command_list}}"
+
+- name: return top level
+  cli_command:
+    command: "{{item}}"
+  loop:
+    - commit
+    - top

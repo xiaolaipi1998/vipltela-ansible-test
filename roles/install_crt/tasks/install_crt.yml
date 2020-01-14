@@ -1,0 +1,5 @@
+---
+
+- name: Viptela device install crt
+  cli_command:
+    command: "request certificate install /home/admin/{{HOST_NAME}}.crt"

@@ -1,0 +1,16 @@
+---
+ansible_ssh_user: admin
+ansible_ssh_pass: admin
+ansible_network_os: ios
+ansible_connection: network_cli
+ansible_user: admin
+ansible_password: admin
+SP_ORGANIZATION_NAME: "Cisco Sy1 - 19968"
+ORGANIZATION_NAME: "Cisco Sy1 - 19968"
+CLOCK_TIMEZONE: "Asia/Shanghai"
+VBOND_ADDRESS: "dc2-vbond1.com"
+VBOND_PORT: 12346
+NTP_SERVER: 10.0.4.1
+DNS_SERVER: 10.0.4.1
+CA_SERVER: 10.124.112.56
+CA_SERVER_PASSWORD: 'admin'

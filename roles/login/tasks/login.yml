@@ -1,0 +1,10 @@
+---
+- name: Login to the vManage
+  uri:
+    url: "https://{{ansible_host}}/dataservice/j_security_check"
+    method: POST
+    body: "j_username={{ansible_user}}&j_password={{ansible_password}}"
+    validate_certs: no
+    headers:
+      Content-Type: "application/x-www-form-urlencoded"
+  register: login

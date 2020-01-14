@@ -1,0 +1,10 @@
+---
+- set_fact:
+    ALL_VIPTELA_LIST: "{{ALL_VIPTELA_LIST|default([])}} + [{'HOST': '{{item}}', 'IP': '{{hostvars[item].VPN512_INTERFACES.eth0.IP_ADDR}}'}]"
+  loop: "{{groups.Viptela}}"
+
+- name: deliver authorized_key to viptela device
+  shell: 'scp /root/.ssh/id_rsa.pub  admin@{{item.IP}}:/home/admin/.ssh/authorized_keys'
+  loop: "{{ALL_VIPTELA_LIST}}"
+  delegate_to: localhost
+

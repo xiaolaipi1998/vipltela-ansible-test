@@ -1,0 +1,8 @@
+---
+
+- name: add vbond ip and port with GUI 
+  hosts: vManage
+  gather_facts: no
+  roles:
+    - role: ../roles/add_vbond
+      tag: vMange:add-vbond

@@ -1,0 +1,7 @@
+- import_playbook: playbooks/ssh.yml
+- import_playbook: playbooks/Viptela_init_config.yml
+- import_playbook: playbooks/CA_certificate.yml
+- import_playbook: playbooks/Viptela_cetificate_chain_install.yml
+- import_playbook: playbooks/Add_vbond.yml
+- import_playbook: playbooks/reboot_viptela.yml
+  when: FIRST_LOGIN == True

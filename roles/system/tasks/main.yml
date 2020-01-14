@@ -1,0 +1,5 @@
+- import_tasks: system_init.yml
+  when: VBOND_FLAG == False
+
+- import_tasks: vbond_system_init.yml
+  when: VBOND_FLAG == True

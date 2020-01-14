@@ -1,0 +1,12 @@
+---
+- name:  Convert the FIRT_LOGIN status
+  lineinfile:
+    path: 'group_vars/all.yml'
+    regex: '^FIRST_LOGIN'
+    line: 'FIRST_LOGIN: False' 
+  delegate_to: localhost
+
+- name: reboot viptela device
+  cli_command:
+    command: "reboot now"
+  ignore_errors: True

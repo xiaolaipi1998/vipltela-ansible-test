@@ -1,0 +1,35 @@
+---
+
+- name: See if the vBond is already set
+  uri:
+    url: "https://{{ ansible_host }}/dataservice/settings/configuration/device"
+    method: GET
+    headers:
+      Cookie: "{{ login.set_cookie }}"
+    validate_certs: no
+    return_content: yes
+  register: uri_results
+  delegate_to: localhost
+  retries: 3
+
+- set_fact:
+    current_vbond_ip: "{{ uri_results.json.data[0].domainIp | default('') }}"
+    current_vbond_port: "{{ uri_results.json.data[0].port | default('') }}"
+
+- name: Set vBond
+  uri:
+    url: "https://{{ ansible_host }}/dataservice/settings/configuration/device"
+    method: PUT
+    headers:
+      Cookie: "{{ login.set_cookie }}"
+    body_format: json
+    body:
+      domainIp: "{{ VBOND_ADDRESS }}"
+      port: "{{ VBOND_PORT | default('12346') }}"
+    validate_certs: no
+    return_content: yes
+  register: uri_results
+  changed_when: true
+  when: current_vbond_ip != VBOND_ADDRESS
+  delegate_to: localhost
+  retries: 60

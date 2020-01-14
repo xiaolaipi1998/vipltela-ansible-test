@@ -1,0 +1,17 @@
+---
+- name: deliver public key to  CA server
+  hosts: CA_host
+  remote_user: root
+  gather_facts: no
+  roles:
+    - role: ../roles/ssh_public_key_ca
+      tag: ssh:public_key_CA
+
+- name: deliver public key to Viptela device
+  hosts: Viptela
+  remote_user: root 
+  serial: 1
+  gather_facts: no
+  roles:
+    - role: ../roles/ssh_public_key_viptela
+      tags: ssh:publick_key_viptela

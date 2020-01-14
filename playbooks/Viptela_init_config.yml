@@ -1,0 +1,16 @@
+---
+- name: Viptela initial configuration
+  hosts: Viptela
+  gather_facts: no
+  roles:
+    -  role: ../roles/system
+       tags: vManage:system
+      
+    -  role: ../roles/vpn0
+       tags: vManage:vpn0
+   
+    -  role: ../roles/vpn512
+       tags: vManage:vpn512
+   
+    
+    

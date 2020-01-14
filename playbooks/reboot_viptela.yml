@@ -1,0 +1,9 @@
+---
+
+- name: reboot all of the viptela device after install certificate crt 
+  hosts: Viptela
+  gather_facts: no
+  roles:
+    - role: ../roles/reboot_viptela
+      tag: Viptela:reboot
+

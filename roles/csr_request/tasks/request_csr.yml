@@ -1,0 +1,15 @@
+---
+
+- name: ask for signature requesting the CSR
+  cli_command:
+    command: "request csr upload vpn 512 scp://{{CA_SERVER}}:{{CLIENT_CSR_DIR}}/{{HOST_NAME}}.csr"
+    check_all: True
+    prompt:
+      - "Enter organization-unit name            :"
+      - "Re-enter organization-unit name          :"
+      - "root@{{CA_SERVER}}'s password:"
+    answer:
+      - "{{ORGANIZATION_NAME}}"
+      - "{{ORGANIZATION_NAME}}"
+      - "{{CA_SERVER_PASSWORD}}"
+    

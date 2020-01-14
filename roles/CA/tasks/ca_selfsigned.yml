@@ -1,0 +1,41 @@
+---
+
+- name: mkdir a directory for CA key
+  file:
+    path: "{{item}}"
+    state: directory
+  loop:
+    - "{{ CA_PRIVATE_KEY_DIR }}"
+    - "{{ CA_CSR_DIR }}"
+    - "{{ CA_PUBLIC_KEY_DIR }}"
+    - "{{ CLIENT_CSR_DIR }}"
+    - "{{ CLIENT_SIGNED_DIR }}"
+
+- name: CA create a private key 
+  openssl_privatekey:
+    path: "{{CA_PRIVATE_KEY_DIR}}/rootCA.key"
+    size: 2048
+
+- name: CA Generate an OpenSSL Certifacate Signing Request with Subject information
+  openssl_csr:
+    path: "{{CA_CSR_DIR}}/rootCA.csr"
+    privatekey_path: "{{CA_PRIVATE_KEY_DIR}}/rootCA.key"
+    country_name: "{{COUNTRY_NAME}}"
+    state_or_province_name: "{{STATE_NAME}}"
+    locality_name: "{{LOCALITY_NAME}}"
+    organization_name: "{{ORGANIZATION_NAME}}"
+    organizational_unit_name: "{{ORGANIZATION_UNIT_NAME}}"
+    common_name: "{{COMMON_NAME}}"
+    email_address: "{{EMAIL_ADDRESS}}"
+    basicConstraints: 
+      - 'CA:TRUE'
+    digest: 'sha256'
+
+- name: Generate a Self Signed OpenSSL certificate
+  openssl_certificate:
+    path: "{{CA_PUBLIC_KEY_DIR}}/rootCA.crt"
+    privatekey_path: "{{CA_PRIVATE_KEY_DIR}}/rootCA.key"
+    csr_path: "{{CA_CSR_DIR}}/rootCA.csr"
+    provider: selfsigned
+
+

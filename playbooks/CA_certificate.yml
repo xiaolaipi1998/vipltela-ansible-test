@@ -1,0 +1,8 @@
+- name: install CA_certificate 
+  hosts: CA_host
+  remote_user: root
+  gather_facts: yes
+  roles:
+    -  role: ../roles/CA
+       tags: CA
+

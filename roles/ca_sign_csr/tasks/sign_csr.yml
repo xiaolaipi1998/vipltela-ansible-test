@@ -1,0 +1,19 @@
+---
+
+- name: Generate an OpenSSL certificate signed with your own CA certificate
+  openssl_certificate:
+    path: "{{CLIENT_SIGNED_DIR}}/{{item}}.crt"
+    csr_path: "{{CLIENT_CSR_DIR}}/{{item}}.csr"
+    ownca_path: "{{CA_PUBLIC_KEY_DIR}}/rootCA.crt"
+    ownca_privatekey_path: "{{CA_PRIVATE_KEY_DIR}}/rootCA.key"
+    provider: ownca
+  loop: "{{groups.Viptela}}"
+
+- name: recevice  client crt  from CA server
+  fetch:
+    src: "{{CLIENT_SIGNED_DIR}}/{{item}}.crt"
+    dest: /tmp/
+    flat: yes
+    validate_checksum: False
+  loop: "{{groups.Viptela}}"
+

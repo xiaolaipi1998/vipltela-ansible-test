@@ -1,0 +1,17 @@
+---
+
+- name: unzip the setuptools packages in the remote CA server
+  unarchive:
+    src: ../files/setuptools-44.0.0.zip
+    dest: /tmp/
+
+- name: Install setuptools 
+  raw: cd /tmp/setuptools-44.0.0 && python setup.py install 
+
+- name: copy pip package to remote CA server
+  unarchive:
+    src: ../files/pip-19.3.1.tar.gz
+    dest: /tmp/
+
+- name: Install pip package
+  raw: cd /tmp/pip-19.3.1 && python setup.py install 

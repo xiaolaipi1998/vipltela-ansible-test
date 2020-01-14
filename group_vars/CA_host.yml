@@ -1,0 +1,13 @@
+---
+CA_PRIVATE_KEY_DIR: '/CA/private_key'
+CA_CSR_DIR: "/CA/csr"
+CA_PUBLIC_KEY_DIR: '/CA/public_key'
+#CLIENT_CSR_DIR: '/CA/client/csr'
+#CLIENT_SIGNED_DIR: '/CA/client/signed'
+COUNTRY_NAME: "AU"
+STATE_NAME: "AU"
+LOCALITY_NAME: "Perth"
+ORGANIZATION_NAME: "BHP"
+ORGANIZATION_UNIT_NAME: "BHP"
+COMMON_NAME: "XCA"
+EMAIL_ADDRESS: "admin@bhp.com"

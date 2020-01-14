@@ -1,0 +1,4 @@
+---
+FIRST_LOGIN: False
+CLIENT_CSR_DIR: '/CA/client/csr'
+CLIENT_SIGNED_DIR: '/CA/client/signed'

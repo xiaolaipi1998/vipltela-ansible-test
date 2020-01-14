@@ -1,0 +1,6 @@
+- name: recevice  root-chain.crt from CA server
+  fetch:
+    src: "{{CA_PUBLIC_KEY_DIR}}/rootCA.crt"
+    dest: /tmp/
+    flat: yes
+    validate_checksum: False

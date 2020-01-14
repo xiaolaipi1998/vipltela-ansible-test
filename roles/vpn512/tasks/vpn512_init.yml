@@ -1,0 +1,26 @@
+---
+
+- set_fact: 
+    command_list: >- 
+      {% for eth, state  in VPN512_INTERFACES.items() %}
+       interface  {{ eth }}
+       {{ state.PORT_STATE }}
+       ip address {{ state.IP_ADDR }}{{ '/' }}{{ state.PREFIX }}
+       ip route 0.0.0.0/0 {{ state.NEXT_HOP }}
+      {% endfor %}
+  
+- name:  vpn512  mode
+  cli_command:
+    command: "vpn 512"
+
+- name: configure interfaces
+  cli_command:
+    command: "{{item}}"
+  with_items: "{{command_list}}"
+
+- name: return top level
+  cli_command:
+    command: "{{item}}"
+  loop:
+    - commit
+    - top

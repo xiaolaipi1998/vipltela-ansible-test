@@ -1,0 +1,7 @@
+---
+
+- name: deliver authorized_key to CA server
+  authorized_key:
+    user: root
+    key: "{{lookup('file', '/root/.ssh/id_rsa.pub')}}"
+    manage_dir: no

@@ -1,0 +1,4 @@
+- import_tasks: pip_install.yml
+- import_tasks: cryptography_install.yml
+- import_tasks: ca_selfsigned.yml
+- import_tasks: ca_root_chain_synchronize.yml
