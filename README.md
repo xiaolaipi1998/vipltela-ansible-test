@@ -171,3 +171,6 @@ step:
 1.  cd Vipltela
 2.  ansible-playbook site.yml -i inventory
 
+## License
+
+CISCO SAMPLE CODE LICENSE
