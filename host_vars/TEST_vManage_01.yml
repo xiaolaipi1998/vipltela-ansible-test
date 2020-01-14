@@ -1,0 +1,19 @@
+---
+HOST_NAME: "SGCORE_vManage_01"
+SYSTEM_IP: "19.0.3.1"
+VPN0_INTERFACES:
+  eth1:
+    TUNNEL_FLAG: True
+    IP_ADDR: 12.0.1.1
+    PREFIX: 24
+    PORT_STATE: "no shutdown"
+    COLOR: "default"
+    SERVICE: "all dhcp dns icmp sshd netconf ntp https"
+    NEXT_HOP: 12.0.1.254
+VPN512_INTERFACES:
+  eth0:
+    IP_ADDR: 10.124.112.110
+    PREFIX: 24
+    PORT_STATE: "no shutdown"
+    NEXT_HOP: 10.124.112.254
+

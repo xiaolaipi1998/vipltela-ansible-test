@@ -1,0 +1,20 @@
+---
+HOST_NAME: "SGCORE_SITE3_01"
+SYSTEM_IP: 19.0.7.1
+VPN0_INTERFACES:
+  ge0/0:
+    TUNNEL_FLAG: True
+    IPSEC: True
+    IP_ADDR: 12.0.12.1
+    PREFIX: 24
+    PORT_STATE: "no shutdown"
+    COLOR: "biz-internet"
+    SERVICE: "all dhcp dns icmp sshd netconf ntp https"
+    NEXT_HOP: 12.0.12.254
+VPN512_INTERFACES:
+  eth0:
+    IP_ADDR: 10.124.112.108
+    PREFIX: 24
+    PORT_STATE: "no shutdown"
+    NEXT_HOP: 10.124.112.254
+

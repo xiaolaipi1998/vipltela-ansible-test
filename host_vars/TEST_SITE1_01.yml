@@ -1,0 +1,35 @@
+---
+HOST_NAME: "SGCORE_SITE1_01"
+SYSTEM_IP: 19.0.5.1
+VPN0_INTERFACES:
+  ge0/0:
+    TUNNEL_FLAG: True
+    IPSEC: True
+    IP_ADDR: 12.0.7.1
+    PREFIX: 24
+    PORT_STATE: "no shutdown"
+    COLOR: "private1"
+    SERVICE: "all dhcp dns icmp sshd netconf ntp https"
+    NEXT_HOP: 12.0.7.254
+  ge0/1:
+    TUNNEL_FLAG: False
+    TLOC_EXTENSION: 'ge0/0'
+    IP_ADDR: 12.0.10.1
+    PREFIX: 24
+    PORT_STATE: "no shutdown"
+  ge0/2:
+    TUNNEL_FLAG: True
+    IPSEC: True
+    IP_ADDR: 12.0.11.1
+    PREFIX: 24
+    PORT_STATE: "no shutdown"
+    COLOR: "private2"
+    SERVICE: "all dhcp dns icmp sshd netconf ntp https"
+    NEXT_HOP: 12.0.11.2
+VPN512_INTERFACES:
+  eth0:
+    IP_ADDR: 10.124.112.11
+    PREFIX: 24
+    PORT_STATE: "no shutdown"
+    NEXT_HOP: 10.124.112.254
+

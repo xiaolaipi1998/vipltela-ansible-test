@@ -1,29 +1,29 @@
 ---
-HOST_NAME: Test_vManage_03
-SYSTEM_IP: 10.255.255.3
+HOST_NAME: "SGCORE_DC_SITE_01"
+SYSTEM_IP: 19.0.4.1
 VPN0_INTERFACES:
-  eth1:
+  ge0/0:
     TUNNEL_FLAG: True
-    IPSEC: False
-    IP_ADDR: 10.1.1.2
+    IPSEC: True
+    IP_ADDR: 12.0.3.1
     PREFIX: 24
     PORT_STATE: "no shutdown"
-    COLOR: "mpls"
+    COLOR: "private1"
     SERVICE: "all dhcp dns icmp sshd netconf ntp https"
-    NEXT_HOP: 10.1.1.254
-  eth2:
-    TUNNEL_FLAG: False
-    IP_ADDR: 10.1.2.2
+    NEXT_HOP: 12.0.3.254
+  ge0/1:
+    TUNNEL_FLAG: True
+    IPSEC: True
+    IP_ADDR: 12.0.4.1
     PREFIX: 24
     PORT_STATE: "no shutdown"
-    COLOR: "biz-internet"
+    COLOR: "private2"
     SERVICE: "all dhcp dns icmp sshd netconf ntp https"
-    NEXT_HOP: 10.1.2.254
+    NEXT_HOP: 12.0.4.254
 VPN512_INTERFACES:
   eth0:
-    IP_ADDR: 10.124.112.120
+    IP_ADDR: 10.124.112.10
     PREFIX: 24
     PORT_STATE: "no shutdown"
     NEXT_HOP: 10.124.112.254
-
 

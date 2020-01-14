@@ -33,7 +33,7 @@
 
 - name: Generate a Self Signed OpenSSL certificate
   openssl_certificate:
-    path: "{{CA_PUBLIC_KEY_DIR}}/rootCA.crt"
+    path: "{{CA_PUBLIC_KEY_DIR}}/root-ca-chain.crt"
     privatekey_path: "{{CA_PRIVATE_KEY_DIR}}/rootCA.key"
     csr_path: "{{CA_CSR_DIR}}/rootCA.csr"
     provider: selfsigned

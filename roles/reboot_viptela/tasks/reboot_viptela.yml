@@ -1,11 +1,11 @@
 ---
 - name:  Convert the FIRT_LOGIN status
   lineinfile:
-    path: 'group_vars/all.yml'
+    path: "{{ FIRST_LOGIN_DIR }}"
     regex: '^FIRST_LOGIN'
     line: 'FIRST_LOGIN: False' 
   delegate_to: localhost
-
+  run_once: True
 - name: reboot viptela device
   cli_command:
     command: "reboot now"

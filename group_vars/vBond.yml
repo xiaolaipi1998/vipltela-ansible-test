@@ -1,5 +1,5 @@
 ---
-VBOND_FLAG: False
+VBOND_FLAG: True
 ZTP_FLAG: False
 VEDGE_FLAG: False
 SITE_ID: 190003

@@ -8,7 +8,7 @@ ansible_password: admin
 SP_ORGANIZATION_NAME: "Cisco Sy1 - 19968"
 ORGANIZATION_NAME: "Cisco Sy1 - 19968"
 CLOCK_TIMEZONE: "Asia/Shanghai"
-VBOND_ADDRESS: "dc2-vbond1.com"
+VBOND_ADDRESS: "sgcore-vbond.com"
 VBOND_PORT: 12346
 NTP_SERVER: 10.0.4.1
 DNS_SERVER: 10.0.4.1
