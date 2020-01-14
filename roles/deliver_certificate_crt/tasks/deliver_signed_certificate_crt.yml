@@ -6,3 +6,18 @@
   raw: 'scp /tmp/{{item.HOST}}.crt admin@{{item.IP}}:'
   loop: "{{ALL_VIPTELA_LIST}}"
   delegate_to: localhost
+
+- name: delete the certificate key in the ansible device
+  file:
+    path: "/tmp/{{ item.HOST }}.crt"
+    state: absent
+  loop: "{{ ALLVIPTELA_LIST }}"
+  delegate_to: localhost
+  run_once: True
+
+- name: delete the root-ca-chain.crt file in the ansible device
+  file:
+    path: "/tmp/roo-ca-chain.crt"
+    state: absent
+  delegate_to: localhost
+  run_once: True
