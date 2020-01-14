@@ -173,9 +173,9 @@ FRIST_LOGIN: True  #When the ansible playbook runs the first time, all the devic
 
 #### Running:
 step:
-1.  cd Vipltela
-2.  ansible-playbook site.yml -i inventory
-
+```
+ansible-playbook site.yml -i inventory
+```
 ## License
 
 CISCO SAMPLE CODE LICENSE
