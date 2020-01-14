@@ -1,5 +1,5 @@
 ---
 FIRST_LOGIN_DIR: '/root/Viptela/group_vars/all.yml'
-FIRST_LOGIN: False
+FIRST_LOGIN: True
 CLIENT_CSR_DIR: '/CA/client/csr'
 CLIENT_SIGNED_DIR: '/CA/client/signed'

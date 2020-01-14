@@ -165,6 +165,11 @@ COMMON_NAME: "XCA"
 EMAIL_ADDRESS: "admin@bhp.com"
 
 ```
+### reboot device setting:
+group_vars/all
+```
+FRIST_LOGIN: True  #When the ansible playbook runs the first time, all the device will reboot,then the FIRST_LOGIN flag will be False
+```
 
 #### Running:
 step:

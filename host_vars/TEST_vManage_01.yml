@@ -1,5 +1,5 @@
 ---
-HOST_NAME: "SGCORE_vManage_01"
+HOST_NAME: "TEST_vManage_01"
 SYSTEM_IP: "19.0.3.1"
 VPN0_INTERFACES:
   eth1:
