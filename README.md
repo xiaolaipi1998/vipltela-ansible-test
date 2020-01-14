@@ -1,6 +1,6 @@
 # ansible-viptela
 
-An Ansible Role for automating a Viptela iniital wokr.
+An Ansible Role for automating a Viptela initial work.
 
 This role can perform the following functions:
 - Configure the Vipltela device
@@ -29,7 +29,7 @@ ansible_ssh_user=root
 ansible_ssh_pass=admin
 
 [vManage_DC1]
-SGCORE_vManage_01 ansible_host=10.124.112.110
+TEST_vManage_01 ansible_host=10.124.112.110
 
 [vManage_DC2]
 
@@ -38,17 +38,17 @@ vManage_DC1
 vManage_DC2
 
 [vBond]
-SGCORE_vBond_01 ansible_host=10.124.112.214
+TEST_vBond_01 ansible_host=10.124.112.214
 
 [vSmart]
-SGCORE_vSmart_01 ansible_host=10.124.112.215
+TEST_vSmart_01 ansible_host=10.124.112.215
 
 [ZTP]
-SGCORE_ZTP_SERVER_01 ansible_host=10.124.112.111
+TEST_ZTP_SERVER_01 ansible_host=10.124.112.111
 
 [vEdge_DC]
-SGCORE_DC_SITE_01 ansible_host=10.124.112.10
-SGCORE_DC_SITE_02 ansible_host=10.124.112.40
+TEST_DC_SITE_01 ansible_host=10.124.112.10
+TEST_DC_SITE_02 ansible_host=10.124.112.40
 
 [vEdge_01]
 
